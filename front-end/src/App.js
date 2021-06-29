@@ -18,6 +18,9 @@ import AdminDash from './pages/dashBoard/AdminDash'
 import RecruiterDetails from './pages/Forms/AdminDetails'
 import UserDetails from './pages/Forms/User'
 import AllJobs from './pages/allJobs'
+import Applications from './pages/Applications'
+import AppliedJobs from './pages/appliedJobs'
+import About from './pages/aboutUs'
 
 const App = () => {
   const [user, setUser] = useState({})
@@ -78,12 +81,19 @@ const App = () => {
             <AllJobs />
           </Route>
           <Route path={'/admin/appplications'} exact>
-            <AllJobs />
+            <Applications />
+          </Route>
+          <Route path={'/user/appliedJobs'} exact>
+            <AppliedJobs />
+          </Route>
+          <Route path={'/about-us'} exact>
+            <About />
           </Route>
 
           <Route path={'/404'} exact>
             <h>404 - Not Found</h>
           </Route>
+
           <Route path={'/**'} exact>
             <Redirect to={'/404'} />
           </Route>

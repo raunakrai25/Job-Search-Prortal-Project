@@ -1,19 +1,27 @@
 import React from 'react'
 
-const applicationContainer = (props) => {
-  const { postDetails } = props
+const ApplicationContainer = (props) => {
+  const { applicationDetails } = props
 
   return (
-    <div class='card text-white bg-success mb-3'>
-      <div class='card-header'>Applicant Name : {postDetails.name} </div>
-      <div class='card-body'>
-        <h5 class='card-title'>Experience : {postDetails.experience}</h5>
-        <h5 class='card-title'>Graduation : {postDetails.graduation}</h5>
-        <h5 class='card-title'>Email : {postDetails.email}</h5>
-        <h5 class='card-title'>Phone Number : {postDetails.phone_number}</h5>
+    <div className='card text-white bg-success mb-3'>
+      <div className='card-header'>
+        Applicant Name : {applicationDetails.name}{' '}
+      </div>
+      <div className='card-body'>
+        <h5 className='card-title'>
+          Experience : {applicationDetails.experience}
+        </h5>
+        <h5 className='card-title'>
+          Graduation : {applicationDetails.graduation}
+        </h5>
+        <h5 className='card-title'>Email : {applicationDetails.email}</h5>
+        <h5 className='card-title'>
+          Phone Number : {applicationDetails.phone_number}
+        </h5>
       </div>
     </div>
   )
 }
 
-export default applicationContainer
+export default ApplicationContainer

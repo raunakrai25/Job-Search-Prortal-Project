@@ -3,13 +3,30 @@ import Axios from 'axios'
 import Navbar from '../../components/Navbar/Nav'
 
 const UserDetails = () => {
-  let ID = window.location.search.split('ID=')[1]
+  let ID = window.location.search.split('?')[1]
+  ID = ID.split('=')[1]
+
+  let company = window.location.search.split('?')[2]
+  company = company.split('=')[1]
+
+  let profile = window.location.search.split('?')[3]
+  profile = decodeURIComponent(profile.split('=')[1])
+  console.log(ID, company, profile)
+
   let user = JSON.parse(localStorage.getItem('user'))
   let fn = user.user.firstName
   let ln = user.user.lastName
   let name = fn + ' ' + ln
 
-  const [credentials, setCredentials] = useState({ id: ID, name: name })
+  let email = user.user.email
+
+  const [credentials, setCredentials] = useState({
+    id: ID,
+    name: name,
+    email: email,
+    company: company,
+    profile: profile,
+  })
 
   const onSubmitClick = async (event) => {
     event.preventDefault()
@@ -36,20 +53,6 @@ const UserDetails = () => {
           <div className='col-md-3'></div>
           <div className='col-md-6 form-container'>
             <form>
-              <div className='mb-5'>
-                <label className='form-label'>Email</label>
-                <input
-                  type='email'
-                  className={'form-control'}
-                  onChange={(e) => {
-                    setCredentials({
-                      ...credentials,
-                      email: e.target.value,
-                    })
-                  }}
-                />
-              </div>
-
               <div className='mb-5'>
                 <label className='form-label'>Experience</label>
                 <input
@@ -117,15 +120,13 @@ const UserDetails = () => {
             </form>
           </div>
         </div>
-        <div className='backBtn' style={{width:'80px'}}>
-        <a href='/Dashboard'>
-        <button
-                type='submit'
-                className={'btn btn-success w-100'}
-               
-              >
-                Back
-              </button></a></div>
+        <div className='backBtn' style={{ width: '80px' }}>
+          <a href='/Dashboard'>
+            <button type='submit' className={'btn btn-success w-100'}>
+              Back
+            </button>
+          </a>
+        </div>
       </div>
     </div>
   )

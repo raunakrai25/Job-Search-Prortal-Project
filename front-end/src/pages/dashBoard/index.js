@@ -46,9 +46,15 @@ const Dashboard = () => {
     <div className='dashboard'>
       <Navbar />
       <div className='contiainer main-container'>
-        <div className='Job '>{
-          <a href='/'><button type="button" class="btn btn-success">Applied</button></a>
-        }</div>
+        <div className='Job '>
+          {
+            <a href='/user/appliedJobs'>
+              <button type='button' className='btn btn-success col-md-2 btn-lg'>
+                Applied Jobs
+              </button>
+            </a>
+          }
+        </div>
         <form>
           <input
             className='form-control me-2'

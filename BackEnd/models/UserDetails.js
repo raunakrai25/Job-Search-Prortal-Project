@@ -24,6 +24,14 @@ const UserDetails = new mongoose.Schema({
     type: String,
     required: true,
   },
+  company: {
+    type: String,
+    required: true,
+  },
+  profile: {
+    type: String,
+    required: true,
+  },
   phone_number: {
     type: Number,
     required: true,

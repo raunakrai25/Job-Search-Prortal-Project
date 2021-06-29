@@ -49,10 +49,21 @@ exports.login = (req, res) => {
 }
 
 exports.details = (req, res) => {
-  let { id, name, experience, dateOfBirth, graduation, email, phone_number } =
-    req.body
+  let {
+    id,
+    name,
+    company,
+    profile,
+    experience,
+    dateOfBirth,
+    graduation,
+    email,
+    phone_number,
+  } = req.body
   let userDetails = new UserDetails({
     name,
+    company,
+    profile,
     id,
     experience,
     dateOfBirth,
@@ -108,7 +119,7 @@ exports.getcompanyDetailsByProfile = (req, res) => {
 }
 
 exports.getUserDetailsByEmail = (req, res) => {
-  let emailParam = req.params.body
+  let emailParam = req.params.email
   UserDetails.find({ email: emailParam })
     .then((UD) => {
       if (UD.length === 0) {
@@ -129,11 +140,28 @@ exports.isValid = (req, res) => {
 }
 
 exports.getAllPosts = (req, res) => {
+  // let emailParam = req.params.body
   CompanyDetails.find({})
     .then((CD) => {
       if (CD.length === 0) {
         console.info('comapny details not found!')
         return res.status(200).send([])
+      }
+      console.log('Comapny details found')
+      return res.status(200).send(CD)
+    })
+    .catch((error) => {
+      console.error(error)
+      return res.status(500).send('Error')
+    })
+}
+
+exports.getAllApplications = (req, res) => {
+  CompanyDetails.find({})
+    .then((CD) => {
+      if (CD.length === 0) {
+        console.info('comapny details not found!')
+        return res.status(200).send(['lol'])
       }
       console.log('Comapny details found')
       return res.status(200).send(CD)

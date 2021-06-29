@@ -16,7 +16,7 @@ router.post(
 
 router.post('/search/profile', userController.getcompanyDetailsByProfile)
 
-router.get('/user-details/:email', userController.getUserDetailsByEmail)
+router.post('/user-details/:email', userController.getUserDetailsByEmail)
 
 router.get('/token', tokenMiddleware.isTokenValid, userController.isValid)
 
