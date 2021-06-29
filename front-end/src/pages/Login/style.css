@@ -1,0 +1,16 @@
+.signup {
+}
+
+.signup .container {
+  padding: 50px;
+  text-align: center;
+}
+
+.signup .container .title {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.signup .btn-container {
+  padding: 20px 0;
+}
